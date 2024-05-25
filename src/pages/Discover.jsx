@@ -14,8 +14,6 @@ export default function Discover() {
 
     const {data, isFetching, error} = useGetTopChartsQuery();
 
-    console.log(data)
-
     if(isFetching) return <Loader title="Music is loading..." />
 
     if(error) return <Error title="failed..." />
