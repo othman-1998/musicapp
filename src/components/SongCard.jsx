@@ -7,24 +7,26 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice';
 
 export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
-  const imageUrl = song.attributes.artwork.url.replace('{w}', '250').replace('{h}', '250'); // Adjust size as needed
+  const imageUrl = song.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250') || 'defaultImageUrl';
 
   const Song = song.attributes;
 
+  console.log(Song)
+
   const handlePauseClick = () => {
 
-    dispath(playPause(false));
+    dispatch(playPause(false));
     
   };
 
+
   const handlePlayClick = () => {
-
-    dispath(setActiveSong({song, data, index}));
-    dispath(playPause(true));
-
+    dispatch(setActiveSong({ song, data, index }));
+    dispatch(playPause(true));
   };
+  
 
 
   return (

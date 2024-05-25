@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Discover() {
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
   // gets the activeSong and isPlaying bool from our redux state manager
   const {activeSong, isPlaying} = useSelector((state) => state.player);
