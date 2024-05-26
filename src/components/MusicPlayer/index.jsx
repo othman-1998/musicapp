@@ -22,6 +22,14 @@ const MusicPlayer = () => {
     if (currentSongs.length) dispatch(playPause(true));
   }, [currentIndex]);
 
+  useEffect(() => {
+    if (activeSong?.attributes?.durationInMillis) {
+      const durationInMillis = activeSong.attributes.durationInMillis;
+      setDuration(durationInMillis);
+      console.log(`Duration: ${formatDuration(durationInMillis)}`);
+    }
+  }, [activeSong]);
+
   const handlePlayPause = () => {
     if (!isActive) return;
 
@@ -52,6 +60,13 @@ const MusicPlayer = () => {
     }
   };
 
+  const formatDuration = (millis) => {
+    const totalSeconds = Math.floor(millis / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
     <div className="relative sm:px-12 px-8 w-full flex items-center justify-between">
       <Track isPlaying={isPlaying} isActive={isActive} activeSong={activeSong} />
@@ -71,7 +86,7 @@ const MusicPlayer = () => {
         <Seekbar
           value={appTime}
           min="0"
-          max={duration}
+          max={Math.floor(duration / 1000)} // Convert to seconds for the seekbar
           onInput={(event) => setSeekTime(event.target.value)}
           setSeekTime={setSeekTime}
           appTime={appTime}

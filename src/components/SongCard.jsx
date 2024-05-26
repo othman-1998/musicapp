@@ -13,6 +13,8 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
   const Song = song?.attributes;
 
+  const isActive = activeSong?.attributes?.name === Song?.name;
+
 
   const handlePauseClick = () => {
 
@@ -30,7 +32,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
   return (
 
-    <div onClick={() => console.log( activeSong && activeSong?.attributes?.name)} className='flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer'>
+    <div className='flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer'>
       
       <div className='relative group w-full h-56'>
 
@@ -52,9 +54,14 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
       <div className='mt-4 flex flex-col'>
         <p className='font-semibold text-lg text-white truncate'> 
-          <Link to={`/songs/${Song?.key}`}>
-            {Song?.name}
-          </Link>
+        <Link
+      to={`/songs/${Song?.key}`}
+      className={`${
+        isActive ? 'text-green-500' : ''
+      }`}
+    >
+      {Song?.name}
+    </Link>
         </p>
         <p className='text-sm truncate text-gray-300 mt-1'>
           <Link to={Song?.artistName ? `/artists/${Song?.artistName[0]?.adamid}` : '/top-artists' }>
