@@ -33,7 +33,7 @@ export default function Discover() {
           value=""
           className='bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5'
           >
-            {genres.map((genre, index) => <option key={index} value={genre.value}>{genre.title}</option>)}
+            {genres && genres.map((genre, index) => <option key={index} value={genre.value}>{genre.title}</option>)}
           </select>
           
         </div>
