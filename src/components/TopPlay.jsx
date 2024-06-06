@@ -15,7 +15,7 @@ import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 const TopChartCard = ({song, index, isPlaying, activeSong, handlePauseClick, handlePlayClick}) => {
 
   return (
-    <div className='w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2'>
+    <div className={`w-full flex flex-row items-center hover:bg-[#2e2a31] py-2 p-4 rounded-lg cursor-pointer mb-2 ${activeSong?.attributes?.name === song.attributes.name ? 'bg-[#2e2a31]' : 'bg-black'}`}>
       <h3 
       className='font-bold text-base text-white mr-3'> 
         {index + 1}. 
@@ -85,7 +85,7 @@ const TopPlay = () => {
   return (
     <div ref={divRef} className='xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col'>
 
-      <div className='w-full flex flex-col'>
+      <div className='w-full flex flex-col bg-[#191624] p-4 rounded-lg'>
         
         <div className='flex flex-row justify-between items-center'>
           <h2 className='text-white font-bold text-2xl'>Top Charts</h2>
@@ -110,7 +110,7 @@ const TopPlay = () => {
 
       </div>
 
-      <div className='w-full flex flex-col mt-8'>
+      <div className='w-full flex flex-col mt-8 bg-[#191624] p-4 rounded-lg'>
         <div className='flex flex-row justify-between items-center'>
           <h2 className='text-white font-bold text-2xl'>Top Artists</h2>
           <Link to="/top-artists">

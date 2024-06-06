@@ -6,19 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Discover() {
 
+  const genreTitle = 'Pop';
+
   const dispatch = useDispatch();
 
   // gets the activeSong and isPlaying bool from our redux state manager
-  const {activeSong, isPlaying} = useSelector((state) => state.player);
-  
+  const {activeSong, isPlaying} = useSelector((state) => state.player);  
 
-    const {data, isFetching, error} = useGetTopChartsQuery();
+  const {data, isFetching, error} = useGetTopChartsQuery();
 
-    if(isFetching) return <Loader title="Music is loading..." />
+  if(isFetching) return <Loader title="Music is loading..." />
 
-    if(error) return <Error title="failed..." />
-
-    const genreTitle = 'Pop';
+  if(error) return <Error title="failed..." />
 
   return (
     <div className='flex flex-col'>

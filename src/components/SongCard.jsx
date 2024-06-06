@@ -32,7 +32,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
   return (
 
-    <div className='flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer'>
+    <div className={`flex flex-col w-[250px] p-4 bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg cursor-pointer ${isActive ? 'bg-opacity-100' : 'bg-opacity-40'} `}>
       
       <div className='relative group w-full h-56'>
 
@@ -48,7 +48,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
         </div>
 
-        <img className='w-full h-full' alt={Song?.albumName} src={imageUrl} />
+        <img className='w-full h-full rounded-md' alt={Song?.albumName} src={imageUrl} />
 
       </div>
 
