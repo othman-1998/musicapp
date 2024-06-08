@@ -14,6 +14,8 @@ import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
 const TopChartCard = ({song, index, isPlaying, activeSong, handlePauseClick, handlePlayClick}) => {
 
+  // console.log(song)
+
   return (
     <div className={`w-full flex flex-row items-center hover:bg-[#2e2a31] py-2 p-4 rounded-lg cursor-pointer mb-2 ${activeSong?.attributes?.name === song.attributes.name ? 'bg-[#2e2a31]' : 'bg-black'}`}>
       <h3 
@@ -30,7 +32,7 @@ const TopChartCard = ({song, index, isPlaying, activeSong, handlePauseClick, han
 
         <div className='flex-1 flex flex-col justify-center mx-3'> 
 
-          <Link to={`/songs/${song?.id}`}>
+          <Link to={`/songs/${song?.attributes?.name}`}>
             <p className='text-xl font-bold text-white'>
               {song?.attributes?.name} 
             </p>
