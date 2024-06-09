@@ -55,7 +55,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
       <div className='mt-4 flex flex-col'>
         <p className='font-semibold text-lg text-white truncate'> 
         <Link
-      to={`/songs/${Song?.key}`}
+      to={`/songs/${song?.attributes?.name}`}
       className={`${
         isActive ? 'text-green-500' : ''
       }`}

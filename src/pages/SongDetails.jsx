@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import {DetailsHeader, Error, Loader, RelatedSongs} from '../components';
 
 import { setActiveSong, playPause } from '../redux/features/playerSlice';
 
-import { useGetSongDetailsQuery, useGetSongDetailssQuery } from '../redux/services/shazamCore';
+import { useGetSongDetailsQuery, useGetSongDetailssQuery, useGetRelatedQuery } from '../redux/services/shazamCore';
 
 const SongDetails = () => {
 
@@ -20,30 +20,32 @@ const SongDetails = () => {
 
     // får fat i songdata som har den key vi skal bruge til at fetch songDetails endpoint
     const {data: songData, isFetching: isFetchingSongData } = useGetSongDetailsQuery({name});
-
-    // const artistTitle = songData?.data?.tracks?.hits[0]?.heading?.subtitle;
-    // const songTitle = songData?.data?.tracks?.hits[0]?.heading?.title;
-
     // key vi skal bruge til at kalde getDetails endpoint
     const key = songData?.data?.tracks?.hits[0].key;
 
+    console.log(key)
+
     // får fat i songDetails ved hjælp af key fra andet endpoint kald
     const {data: songDetails, isFetching: isFetchingSongDetails } = useGetSongDetailssQuery({key});
+    const relatedSongsUrl = songDetails?.relatedtracksurl;
+    const keyy = songDetails?.key;
+
+    // får fat i relateret songe baseret på key
+    const {data, isFetching: isFetchingRelatedSongs } = useGetRelatedQuery({key});
 
 
-    console.log(songDetails);
 
-    const songTitle = songDetails?.title || '';
-    const songArtist = songDetails?.subtitle || '';
-    const type = songDetails?.type || '';
-    const genre = songDetails?.genres?.primary || '';
-    const artistImage = songDetails?.images?.background || '';
-    const coverImage = songDetails?.images?.coverart || '';
-    const releaseDate = songDetails?.releasedate || '';
-    const linkToShazam = songDetails?.url || '';
-    const artistId = (Array.isArray(songDetails?.artists) && songDetails.artists.length > 0) ? songDetails.artists[0]?.adamid : '';
+    const handlePauseClick = () => {
 
-
+        dispatch(playPause(false));
+        
+      };
+    
+    
+      const handlePlayClick = (song, index) => {
+        dispatch(setActiveSong({ song, data, index }));
+        dispatch(playPause(true));
+      };
 
   return (
     <div className='flex flex-col'>
@@ -64,7 +66,15 @@ const SongDetails = () => {
                 <p>No lyrics found...</p>
             </div>
         </div>
+        
 
+        <RelatedSongs 
+        data={data}
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        handlePauseClick={handlePauseClick}
+        handlePlayClick={handlePlayClick}
+        />
     </div>
   )
 }
