@@ -30,7 +30,8 @@ const SongDetails = () => {
     // får fat i songDetails ved hjælp af key fra andet endpoint kald
     const {data: songDetails, isFetching: isFetchingSongDetails } = useGetSongDetailssQuery({key});
 
-    // console.log(songDetails);
+
+    console.log(songDetails);
 
     const songTitle = songDetails?.title || '';
     const songArtist = songDetails?.subtitle || '';
@@ -49,6 +50,7 @@ const SongDetails = () => {
         <DetailsHeader 
         // artistId={artistId}
         songData={songDetails}
+        isFetchingSongDetails={isFetchingSongDetails}
         />
 
 
@@ -58,23 +60,9 @@ const SongDetails = () => {
                 Lyrics
             </h2>
 
-            <div className="mt-5 text-white">
-            {isFetchingSongDetails ? (
-                <p>Data is loading...</p>
-            ) : songDetails ? (
-                <>
-                    <p>Title: {songTitle}</p>
-                    <p>Artist: {songArtist}</p>
-                    <p>Genre: {genre}</p>
-                    <img className="w-40 rounded-lg" alt="artistImage" src={artistImage} />
-                    <img className="w-40 rounded-lg" alt="coverImage" src={coverImage} />
-                    <p>Release Date: {releaseDate}</p>
-                    <p><a href={linkToShazam}>Link to Shazam</a></p>
-                </>
-            ) : (
-                <p>No data available</p>
-            )}
-        </div>
+            <div className="mt-3 text-white">
+                <p>No lyrics found...</p>
+            </div>
         </div>
 
     </div>

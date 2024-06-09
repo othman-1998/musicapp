@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const DetailsHeader = ({artistId, artistData, songData}) => {
+const DetailsHeader = ({artistId, artistData, songData, isFetchingSongDetails}) => {
 
 
     // Determine the image source based on the availability of artistId and artistData
@@ -21,19 +21,25 @@ const DetailsHeader = ({artistId, artistData, songData}) => {
 
             <img alt="art" src={songData?.images?.coverart} className="sm:w-49 w-28 sm:h-28 h-28 rounded-full object-contain border-2 shadow-xl shadow-black" />
 
+            <p className='absolute top-2 right-3 text-gray-700 text-sm'>
+              <a target='blank' href={songData?.url}>
+                Link to shazam
+              </a>
+            </p>
+
             <div className='ml-5'>
 
               <p className='font-bold sm:text-3xl text-xl text-white'>
-                {artist ? artist?.name : songData?.subtitle}
+                {artist ? artist?.name : songData?.subtitle || 'Songtitle is loading...'}
               </p>
               {!artistId && (
                 <p className='text-base text-gray-400 mt-2'>
-                  {songData?.title}
+                  {songData?.title || 'Name of artist is loading...'}
                 </p>
               )}
 
               <p className='text-base text-gray-400 mt-2'>
-                {artistId ? artist?.genreNames[0] : songData?.genres?.primary}
+                {artistId ? artist?.genreNames[0] : songData?.genres?.primary || 'Genre is loading...'}
               </p>
               
               <p className='text-base text-gray-400 mt-2'>
