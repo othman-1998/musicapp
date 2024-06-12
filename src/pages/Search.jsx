@@ -5,11 +5,16 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PlayPause from '../components/PlayPause';
+import { playPause, setActiveSong } from '../redux/features/playerSlice';
+import { useDispatch } from 'react-redux';
 
 const Search = () => {
 
 
     const {searchTerm} = useParams();
+
+      const dispatch = useDispatch();
+
 
     console.log(searchTerm)
 
@@ -20,17 +25,17 @@ const Search = () => {
     const {activeSong, isPlaying} = useSelector((state) => state.player);
 
     
-  const handlePauseClick = () => {
+  // const handlePauseClick = () => {
 
-    dispatch(playPause(false));
+  //   dispatch(playPause(false));
     
-  };
+  // };
 
 
-  const handlePlayClick = () => {
-    dispatch(setActiveSong({ song, data, index }));
-    dispatch(playPause(true));
-  };
+  // const handlePlayClick = () => {
+  //   dispatch(setActiveSong({ song, data, index }));
+  //   dispatch(playPause(true));
+  // };
 
 
     if(isFetching) {
@@ -47,7 +52,7 @@ const Search = () => {
             const imageUrl = song?.images?.default?.replace('{w}', '250').replace('{h}', '250') || 'defaultImageUrl';
 
             return (
-                <div className={`flex flex-col w-[250px] p-4 bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg cursor-pointer`}>
+                <div className={`flex flex-col w-[250px] p-4 bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg`}>
       
                 <div className='relative group w-full h-56'>
           
@@ -55,8 +60,8 @@ const Search = () => {
           
                     <PlayPause
                     song={song}
-                    handlePause={handlePauseClick}
-                    handlePlay={handlePlayClick}
+                    // handlePause={handlePauseClick}
+                    // handlePlay={handlePlayClick()}
                     isPlaying={isPlaying}
                     activeSong={activeSong}
                     />
