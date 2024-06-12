@@ -23,13 +23,15 @@ export default function Discover() {
 
   if(error) return <Error title="failed..." />
 
+  const genreTitle = genres.find( ({ value }) => value === genreList)?.title || 'pop';
+
   return (
     <div className='flex flex-col'>
 
         <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10'>
 
           <h2 className='font-bold text-3xl text-white text-left'>
-            Discover {genreList.toLowerCase()}
+            Discover {genreTitle}
           </h2>
           <select
           onChange={(e) => {dispatch(selectGenreList(e.target.value))}}

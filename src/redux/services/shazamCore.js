@@ -20,7 +20,8 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
             getTopSongsAroundYou: builder.query({
                 query: ({ country }) => `/charts/get-top-songs-in-country?country_code=${country}&limit=10`
               }),
-            getTopChartsByGenre: builder.query({ query: (genre) => `/charts/get-top-songs-in_world_by_genre?genre=${genre}&limit=10` })
+            getTopChartsByGenre: builder.query({ query: (genre) => `/charts/get-top-songs-in_world_by_genre?genre=${genre}&limit=10` }),
+            getUserSearchInput: builder.query({ query: ({searchTerm}) => `/search?term=${searchTerm}&limit=10`})
         })
     });
 
@@ -33,5 +34,6 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
         useGetArtistDetailsQuery,
         useGetArtistTopSongQuery,
         useGetTopSongsAroundYouQuery,
-        useGetTopChartsByGenreQuery
+        useGetTopChartsByGenreQuery,
+        useGetUserSearchInputQuery
     } = shazamCoreApi;
