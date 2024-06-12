@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import PlayPause from './PlayPause';
+import { useGetSongDetailsQuery } from '../redux/services/shazamCore';
 
 const SongBar = ({ song, index, artistId, isPlaying, activeSong, handlePauseClick, handlePlayClick }) => {
 
+  const name = song?.title;
 
-  console.log(song)
+  console.log(name)
+
+  const {data: songData, isFetching: isFetchingSongData } = useGetSongDetailsQuery(name);
+
+  // console.log(songData)
 
 
   return (
-  <div className={`w-full flex flex-row items-center hover:bg-[#2e2a31] ${activeSong?.title === song?.title ? 'bg-[#2e2a31]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
+  <div onClick={() => console.log(song)} className={`w-full flex flex-row items-center hover:bg-[#2e2a31] ${activeSong?.title === song?.title ? 'bg-[#2e2a31]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
     <h3 className="font-bold text-base text-white mr-3">{index + 1}.</h3>
     <div className="flex-1 flex flex-row justify-between items-center">
       <img
@@ -30,9 +36,11 @@ const SongBar = ({ song, index, artistId, isPlaying, activeSong, handlePauseClic
             {song?.attributes?.name}
           </p>
         )}
+        <Link to={`/artists/${song?.subtitle}`}>
         <p className="text-base text-gray-300 mt-1">
           {artistId ? song?.attributes?.albumName : song?.subtitle}
         </p>
+        </Link>
       </div>
     </div>
     {!artistId

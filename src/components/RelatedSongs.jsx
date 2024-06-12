@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import SongBar from './SongBar';
-
+import { useGetSongDetailsQuery } from '../redux/services/shazamCore';
 
 const RelatedSongs = ({
   data,
@@ -10,8 +10,6 @@ const RelatedSongs = ({
   handlePlayClick,
   artistId
 }) => {
-
-  console.log(data?.tracks);
 
   return (
     <div className='text-white flex flex-col'>
@@ -23,6 +21,7 @@ const RelatedSongs = ({
           key={`${song.key}-${artistId}`}
           song={song}
           index={index}
+          artistId={artistId}
           isPlaying={isPlaying}
           activeSong={activeSong}
           handlePauseClick={handlePauseClick}

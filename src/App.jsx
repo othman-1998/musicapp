@@ -20,7 +20,7 @@ const App = () => {
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/top-charts" element={<TopCharts />} />
               <Route path="/around-you" element={<AroundYou />} />
-              <Route path="/artists/:id" element={<ArtistDetails />} />
+              <Route path="/artists/:name" element={<ArtistDetails />} />
               <Route path="/songs/:name" element={<SongDetails />} />
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
@@ -31,7 +31,7 @@ const App = () => {
         </div>
       </div>
 
-      {activeSong?.attributes?.name && (
+      {(activeSong?.attributes?.name || activeSong.title) && (
         <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#191624] backdrop-blur-lg rounded-t-3xl z-10">
           <MusicPlayer />
         </div>

@@ -7,6 +7,7 @@ import Player from './Player';
 import Seekbar from './Seekbar';
 import Track from './Track';
 import VolumeBar from './VolumeBar';
+import { useGetSongDetailsQuery } from '../../redux/services/shazamCore';
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } = useSelector((state) => state.player);
@@ -17,6 +18,11 @@ const MusicPlayer = () => {
   const [repeat, setRepeat] = useState(false);
   const [shuffle, setShuffle] = useState(false);
   const dispatch = useDispatch();
+
+  // const {data: songData, isFetching: isFetchingSongData } = useGetSongDetailsQuery({activeSong});
+
+
+
 
   useEffect(() => {
     if (currentSongs.length) dispatch(playPause(true));
