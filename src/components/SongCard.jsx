@@ -36,7 +36,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
       
       <div className='relative group w-full h-56'>
 
-        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${isActive ? 'flex bg-opacity-0' : 'hidden'} `}>
+        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${isActive ? 'flex bg-opacity-50' : 'hidden'} `}>
 
           <PlayPause
           song={song}
@@ -57,7 +57,7 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
         <Link
       to={`/songs/${song?.attributes?.name}`}
       className={`${
-        isActive ? 'text-[#0275ff]' : ''
+        isActive ? 'text-green-500' : ''
       }`}
     >
       {Song?.name}
