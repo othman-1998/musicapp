@@ -33,6 +33,8 @@ const SongDetails = () => {
     // får fat i relateret songe baseret på key
     const {data, isFetching: isFetchingRelatedSongs } = useGetRelatedQuery({key});
 
+    // console.log(data)
+
 
 
     const handlePauseClick = () => {

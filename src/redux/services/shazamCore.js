@@ -11,10 +11,15 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
             },
         }),
         endpoints: (builder) => ({
-            getTopCharts: builder.query({ query: () => '/charts/get-top-songs-in-world' }),
+            getTopCharts: builder.query({ query: () => '/charts/get-top-songs-in-world?limit=10' }),
             getSongDetails: builder.query({ query: ({ name }) => `/search?term=${name}&limit=1` }),
             getSongDetailss: builder.query({ query: ({ key }) => `/songs/get_details?id=${key}` }),
-            getRelated: builder.query({ query: ({key}) => `/songs/list-recommendations?id=${key}&limit=10` })
+            getRelated: builder.query({ query: ({key}) => `/songs/list-recommendations?id=${key}&limit=10` }),
+            getArtistDetails: builder.query({ query: ({ adam_id }) => `/artist/get-details?id=${adam_id}` }),
+            getArtistTopSong: builder.query({ query: ({ adam_id }) => `/artist/get-top-songs?id=${adam_id}&offset=0` }),
+            getTopSongsAroundYou: builder.query({
+                query: ({ country }) => `/charts/get-top-songs-in-country?country_code=${country}&limit=10`
+              })
         })
     });
 
@@ -23,5 +28,8 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
         useGetTopChartsQuery,
         useGetSongDetailsQuery,
         useGetSongDetailssQuery,
-        useGetRelatedQuery
+        useGetRelatedQuery,
+        useGetArtistDetailsQuery,
+        useGetArtistTopSongQuery,
+        useGetTopSongsAroundYouQuery
     } = shazamCoreApi;

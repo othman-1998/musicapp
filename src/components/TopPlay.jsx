@@ -14,8 +14,6 @@ import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
 const TopChartCard = ({song, index, isPlaying, activeSong, handlePauseClick, handlePlayClick}) => {
 
-  // console.log(song)
-
   return (
     <div className={`w-full flex flex-row items-center hover:bg-[#2e2a31] py-2 p-4 rounded-lg cursor-pointer mb-2 ${activeSong?.attributes?.name === song.attributes.name ? 'bg-[#2e2a31]' : 'bg-black'}`}>
       <h3 
@@ -72,7 +70,10 @@ const TopPlay = () => {
     divRef.current.scrollIntoView({ behavior: 'smooth' });
   });
 
-  const topPlays = data?.data?.slice(0,5);
+  const topCharts = data?.data?.slice(0,5);
+
+  const topArtist = data?.data?.slice(5, 10);
+
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
@@ -97,7 +98,7 @@ const TopPlay = () => {
         </div>
 
         <div className='mt-4 flex flex-col gap-1'>
-          {topPlays?.map((song, index) => (
+          {topCharts?.map((song, index) => (
             <TopChartCard 
               key={index} 
               song={song} 
@@ -129,14 +130,14 @@ const TopPlay = () => {
         modules={[FreeMode]}
         className='mt-4'
         >
-          {topPlays?.map((song, index) => (
+          {topArtist?.map((song, index) => (
             <SwiperSlide 
             style={{width: '25%', height: 'auto'}} 
             key={index}
             className='shadow-lg rounded-full animate-sliderright'
             >
               <Link 
-              // to={`/artists/${song?.artists[0].adamid}`}
+              to={`/artists/${song?.attributes?.artistName}`}
               >
                 <img 
                   // src={song?.attributes?.artwork?.url} 
