@@ -32,11 +32,11 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
   return (
 
-    <div className={`flex flex-col w-[250px] p-4 bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg cursor-pointer ${isActive ? 'bg-opacity-100' : 'bg-opacity-40'} `}>
+    <div className={`flex flex-col w-[250px] p-4 bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg cursor-pointer`}>
       
       <div className='relative group w-full h-56'>
 
-        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.attributes?.name === song?.name ? 'flex bg-opacity-70 bg-red' : 'hidden'} `}>
+        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${isActive ? 'flex bg-opacity-0' : 'hidden'} `}>
 
           <PlayPause
           song={song}
@@ -57,14 +57,14 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
         <Link
       to={`/songs/${song?.attributes?.name}`}
       className={`${
-        isActive ? 'text-green-500' : ''
+        isActive ? 'text-[#0275ff]' : ''
       }`}
     >
       {Song?.name}
     </Link>
         </p>
         <p className='text-sm truncate text-gray-300 mt-1'>
-          <Link to={Song?.artistName ? `/artists/${Song?.artistName[0]?.adamid}` : '/top-artists' }>
+          <Link to={Song?.artistName ? `/artists/${Song?.artistName}` : '/top-artists' }>
             {Song?.artistName}
           </Link>
         </p>
