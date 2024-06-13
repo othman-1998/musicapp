@@ -33,8 +33,9 @@ const App = () => {
       </div>
 
       {(activeSong?.attributes?.name || activeSong.title) && (
-        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#191624] backdrop-blur-lg rounded-t-3xl z-10">
+        <div className="absolute p-2 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#191624] backdrop-blur-lg rounded-t-3xl z-10">
           <MusicPlayer />
+          {/* <audio className='w-1/2' id="audio" src={activeSong?.attributes?.previews[0]?.url} controls autoPlay /> */}
         </div>
       )}
     </div>
