@@ -49,18 +49,22 @@ const Search = () => {
 
   return (
     <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
-    {songs?.map((song, index) => (
-      <SongCard
-      key={index}
-      song={song}
-      index={index}
-      activeSong={activeSong}
-      isPlaying={isPlaying}
-      data={data}
-      handlePauseClick={handlePauseClick}
-      handlePlayClick={() => handlePlayClick(song, index)}
-      />
-    ))}
+
+      <h2 className='font-bold text-3xl text-white text-left'>Showing results for {searchTerm}</h2>
+
+      {songs?.map((song, index) => (
+        <SongCard
+        key={index}
+        song={song}
+        index={index}
+        activeSong={activeSong}
+        isPlaying={isPlaying}
+        data={data}
+        handlePauseClick={handlePauseClick}
+        handlePlayClick={() => handlePlayClick(song, index)}
+        />
+      ))}
+
   </div>
   )
 }

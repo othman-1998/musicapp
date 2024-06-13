@@ -27,33 +27,9 @@ const playerSlice = createSlice({
       state.currentIndex = action.payload.i;
       state.isActive = true;
     },
-
-    nextSong: (state, action) => {
-      if (state.currentSongs[action.payload]?.track) {
-        state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
-        state.activeSong = state.currentSongs[action.payload];
-      }
-
-      state.currentIndex = action.payload;
-      state.isActive = true;
-    },
-
-    prevSong: (state, action) => {
-      if (state.currentSongs[action.payload]?.track) {
-        state.activeSong = state.currentSongs[action.payload]?.track;
-      } else {
-        state.activeSong = state.currentSongs[action.payload];
-      }
-
-      state.currentIndex = action.payload;
-      state.isActive = true;
-    },
-
     playPause: (state, action) => {
       state.isPlaying = action.payload;
     },
-
     selectGenreList: (state, action) => {
       state.genreList = action.payload;
     },
