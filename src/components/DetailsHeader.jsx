@@ -21,12 +21,6 @@ const DetailsHeader = ({artistId, artistData, songData, isFetchingSongDetails}) 
 
             <img alt="art" src={songData?.images?.coverart} className="sm:w-49 w-28 sm:h-28 h-28 rounded-full object-contain border-2 shadow-xl shadow-black" />
 
-            <p className='absolute top-2 right-3 text-gray-700 text-sm'>
-              <a target='blank' href={songData?.url}>
-                Link to shazam
-              </a>
-            </p>
-
             <div className='ml-5'>
 
               <p className='font-bold sm:text-3xl text-xl text-white'>

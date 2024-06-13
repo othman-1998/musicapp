@@ -74,14 +74,6 @@ const ArtistDetails = () => {
             src={imageSrc} 
             className="sm:w-49 w-28 sm:h-28 h-28 rounded-full object-contain border-2 shadow-xl shadow-black" />
 
-            <p className='absolute top-2 right-3 text-gray-700 text-sm'>
-              <a 
-              target='blank' 
-              href="#">
-                Link to shazam
-              </a>
-            </p>
-
             <div className='ml-5'>
                 <p className='text-base text-white mt-2'>
                   {hasArtistDetails && artistTopSongs?.data[0]?.attributes?.artistName}

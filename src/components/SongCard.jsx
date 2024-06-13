@@ -7,13 +7,15 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice';
 
 export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
+  console.log(song)
+
   const dispatch = useDispatch();
 
-  const imageUrl = song.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250') || 'defaultImageUrl';
+  const imageUrl = song.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250') || song?.images?.default?.replace('{w}', '250').replace('{h}', '250') || 'defaultImage';
 
   const Song = song?.attributes;
 
-  const isActive = activeSong?.attributes?.name === Song?.name;
+  const isActive = activeSong?.id === song?.id; // Use a unique identifier
 
 
   const handlePauseClick = () => {
@@ -48,24 +50,24 @@ export default function SongCard({song, index, activeSong, isPlaying, data}) {
 
         </div>
 
-        <img className='w-full h-full rounded-md' alt={Song?.albumName} src={imageUrl} />
+        <img className='w-full h-full rounded-md' alt={Song?.albumName || song?.alias} src={imageUrl} />
 
       </div>
 
       <div className='mt-4 flex flex-col'>
         <p className='font-semibold text-lg text-white truncate'> 
         <Link
-      to={`/songs/${song?.attributes?.name}`}
+      to={Song?.artistName ? `/songs/${song?.attributes?.name}` : `/songs/${song?.heading?.title}`}
       className={`${
-        isActive ? 'text-green-500' : ''
+        isActive ? 'text-green-500' : 'text-white'
       }`}
     >
-      {Song?.name}
+      {Song?.name || song?.heading?.title}
     </Link>
         </p>
         <p className='text-sm truncate text-gray-300 mt-1'>
-          <Link to={Song?.artistName ? `/artists/${Song?.artistName}` : '/top-artists' }>
-            {Song?.artistName}
+          <Link to={Song?.artistName ? `/artists/${Song?.artistName}` : `/artists/${song?.heading?.subtitle}` }>
+            {Song?.artistName || song?.heading?.subtitle}
           </Link>
         </p>
       </div>

@@ -12,18 +12,17 @@ export default function Discover() {
   // gets the activeSong and isPlaying bool from our redux state manager
   const {activeSong, isPlaying, genreList} = useSelector((state) => state.player);  
 
-  console.log(genreList)
+  console.log(activeSong)
 
 
-  const {data, isFetching, error} = useGetTopChartsByGenreQuery(genreList || 'pop');
+  const {data, isFetching, error} = useGetTopChartsByGenreQuery(genreList || 'HIP_HOP_RAP');
 
-  console.log(data)
 
   if(isFetching) return <Loader title="Music is loading..." />
 
   if(error) return <Error title="failed..." />
 
-  const genreTitle = genres.find( ({ value }) => value === genreList)?.title || 'pop';
+  const genreTitle = genres.find( ({ value }) => value === genreList)?.title || 'Hip-Hop';
 
   return (
     <div className='flex flex-col'>
