@@ -41,3 +41,29 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* 
+audio::-webkit-media-controls-enclosure {
+  background: transparent !important;
+}
+
+audio::-webkit-media-controls-play-button {
+  color: white !important;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  color: white !important;
+  text-shadow: none;
+}
+
+
+audio::-webkit-media-controls-time-remaining-display {
+  color: white !important;
+  text-shadow: none;
+}
+
+
+input[pseudo="-webkit-media-controls-timeline" i]::-internal-media-controls-segmented-track  {
+  color: white !important;
+  text-shadow: none;
+} */
