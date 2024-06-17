@@ -16,6 +16,10 @@ const SongCard = ({song, index, activeSong, isPlaying, data}) => {
 
   const isActive = activeSong?.id === song?.id;
 
+  console.log(activeSong?.id)
+  console.log(song?.id)
+
+
   const handlePauseClick = () => {
     dispatch(playPause(false));
   }
