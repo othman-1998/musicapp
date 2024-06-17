@@ -72,7 +72,7 @@ const ArtistDetails = () => {
             <img 
             alt="art" 
             src={imageSrc} 
-            className="sm:w-49 w-28 sm:h-28 h-28 rounded-full object-contain border-2 shadow-xl shadow-black" />
+            className="ml-5 sm:w-49 w-28 sm:h-28 h-28 rounded-full object-contain border shadow-xl shadow-black" />
 
             <div className='ml-5'>
                 <p className='text-base text-white mt-2'>

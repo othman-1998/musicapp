@@ -2,7 +2,7 @@ import React from 'react';
 
 const Track = ({ isPlaying, isActive, activeSong }) => {
 
-  const imageUrl = activeSong.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250') || 'defaultImageUrl';
+  const imageUrl = activeSong.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250')  || activeSong?.images?.default?.replace('{w}', '250').replace('{h}', '250') || 'defaultImageUrl';
 
   return (
   
@@ -12,10 +12,10 @@ const Track = ({ isPlaying, isActive, activeSong }) => {
     </div>
     <div className="w-[50%]">
       <p className="truncate text-white font-bold text-lg">
-        {activeSong?.attributes?.name ? activeSong?.attributes?.name : 'No active Song'}
+        {activeSong?.attributes?.name ? activeSong?.attributes?.name : activeSong?.heading?.title}
       </p>
       <p className="truncate text-gray-300">
-        {activeSong?.attributes?.artistName ? activeSong?.attributes?.artistName : 'No active Song'}
+        {activeSong?.attributes?.artistName ? activeSong?.attributes?.artistName : activeSong?.heading?.subtitle}
       </p>
     </div>
   </div>

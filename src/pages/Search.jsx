@@ -40,8 +40,8 @@ const Search = () => {
 
     return (
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
-            <h2 className='font-bold text-3xl text-white text-left'>Showing results for {searchTerm}</h2>
-
+            <h2 className='font-bold text-3xl text-white text-left'>Results for {searchTerm}</h2>
+            <br></br>
             {songs?.map((song, index) => {
                 const imageUrl = song?.images?.default?.replace('{w}', '250').replace('{h}', '250') || 'defaultImage';
                 

@@ -9,16 +9,23 @@ const MusicPlayer = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
+    console.log(activeSong?.stores?.apple?.previewurl);
+
     const audio = audioRef.current;
 
-    if (activeSong?.attributes?.previews?.length > 0) {
-      if (audio.src !== activeSong.attributes.previews[0].url) {
-        audio.src = activeSong.attributes.previews[0].url;
+    // Get the URL from the available endpoints
+    const previewUrl = activeSong?.attributes?.previews?.[0]?.url || activeSong?.stores?.apple?.previewurl;
+
+    if (previewUrl) {
+      // Check if the current audio source is different from the new one
+      if (audio.src !== previewUrl) {
+        audio.src = previewUrl;
         audio.load();
       }
 
+      // Play or pause based on the state
       if (isActive && isPlaying) {
-        audio.play().catch(error => console.error('Playback error:', error));
+        audio.play().catch((error) => console.error('Playback error:', error));
       } else {
         audio.pause();
       }
