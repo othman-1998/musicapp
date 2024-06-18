@@ -12,6 +12,7 @@ const SongCard = ({song, index, activeSong, isPlaying, data}) => {
     song.attributes?.artwork?.url?.replace('{w}', '250').replace('{h}', '250') ||
     song?.images?.default?.replace('{w}', '250').replace('{h}', '250') ||
     'defaultImage';
+    
   const Song = song.attributes;
 
   const isActive = activeSong?.id === song?.id;
