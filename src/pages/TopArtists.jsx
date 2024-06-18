@@ -16,10 +16,11 @@ const TopArtists = () => {
 
   return (
     <div className='flex flex-col'>
-
-        <h2 className='font-bold text-3xl text-white text-left mb-10'>
-            Discover Top Artists
-        </h2>
+        <div className=' w-full'>
+            <h2 className='font-bold text-3xl text-white text-left mb-10'>
+                Discover Top Artists
+            </h2>
+        </div>
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
             {data?.data?.map((track, i) => (
                 <ArtistCard 

@@ -21,7 +21,6 @@ const Search = () => {
 
     const songs = data?.data?.tracks?.hits?.map((hit) => hit);
 
-    console.log(songs);
 
     if (isFetching) {
         return <Loader title="Loading songs around you..." />;
@@ -40,8 +39,9 @@ const Search = () => {
 
     return (
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
+            <div className=' w-full'>
             <h2 className='font-bold text-3xl text-white text-left'>Results for {searchTerm}</h2>
-            <br></br>
+            </div>
             {songs?.map((song, index) => {
                 const imageUrl = song?.images?.default?.replace('{w}', '250').replace('{h}', '250') || 'defaultImage';
                 
