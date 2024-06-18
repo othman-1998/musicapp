@@ -13,7 +13,6 @@ const AroundYou = () => {
 
     const {activeSong, isPlaying} = useSelector((state) => state.player);
 
-
     useEffect(() => {
         axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_1lfcOxYxIeF5e3L24HHUKMhQsiH3H`)
         .then((res) => { 
@@ -28,17 +27,11 @@ const AroundYou = () => {
     const {data, isFetching, error} = useGetTopSongsAroundYouQuery({country});
 
 
-    console.log(data?.data)
-
-
-
-
     if(isFetching && loading) {
         return <Loader title="Loading songs around you..." />
     }
 
     if(error && country) return <Error />;
-
 
   return (
     <div className='flex flex-col'>
@@ -52,7 +45,7 @@ const AroundYou = () => {
         <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
             {data?.data?.map((song, index) => (
                 <SongCard 
-                key={song.key}
+                key={index}
                 song={song}
                 isPlaying={isPlaying}
                 activeSong={activeSong}

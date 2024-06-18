@@ -11,7 +11,6 @@ const ArtistDetails = () => {
 
   // giver os navnet på url parameteren, som er sat til og være name
   const {name} =  useParams();
-  console.log(name)
 
   const {data: songData, isFetching: isFetchingSongData } = useGetSongDetailsQuery({name});
 
@@ -20,17 +19,11 @@ const ArtistDetails = () => {
   const {data: artistDetailsState, isFetching: isFetchingArtistDetails } = useGetArtistDetailsQuery({adam_id});
   const hasArtistDetails = artistDetailsState?.data?.length > 0;
 
-  console.log(hasArtistDetails && artistDetailsState?.data[0]?.relationships?.albums)
-
-
   const imageSrc = hasArtistDetails
     ? artistDetailsState.data[0]?.attributes?.artwork?.url.replace('{w}', '500').replace('{h}', '500')
     : songData?.images?.coverart;
 
   const {data: artistTopSongs, isFetching: isFetchingArtistTopSongs } = useGetArtistTopSongQuery({adam_id});
-
-  console.log(artistTopSongs?.data)
-
 
 
   const {activeSong, isPlaying} = useSelector((state) => state.player);

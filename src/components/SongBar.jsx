@@ -8,8 +8,6 @@ const SongBar = ({ song, index, artistId, isPlaying, activeSong, handlePauseClic
 
   const name = song?.title;
 
-  console.log(name)
-
   const {data: songData, isFetching: isFetchingSongData } = useGetSongDetailsQuery(name);
 
   // console.log(songData)

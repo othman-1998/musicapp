@@ -5,8 +5,6 @@ const ArtistCard = ({track}) => {
 
   const navigate = useNavigate();
 
-  console.log(track)
-
   return (
     <div onClick={() => navigate(`/artists/${track?.attributes?.artistName}`)} className='flex flex-col 2-[250px] bg-[#191624] backdrop-blur-sm animate-slideup rounded-lg p-4 text-white cursor-pointer'>
       <img 

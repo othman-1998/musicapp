@@ -12,9 +12,6 @@ export default function Discover() {
   // gets the activeSong and isPlaying bool from our redux state manager
   const {activeSong, isPlaying, genreList} = useSelector((state) => state.player);  
 
-  console.log(activeSong)
-
-
   const {data, isFetching, error} = useGetTopChartsByGenreQuery(genreList || 'HIP_HOP_RAP');
 
 

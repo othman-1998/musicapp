@@ -23,8 +23,6 @@ const SongDetails = () => {
     // key vi skal bruge til at kalde getDetails endpoint
     const key = songData?.data?.tracks?.hits[0].key;
 
-    console.log(key)
-
     // får fat i songDetails ved hjælp af key fra andet endpoint kald
     const {data: songDetails, isFetching: isFetchingSongDetails } = useGetSongDetailssQuery({key});
     const relatedSongsUrl = songDetails?.relatedtracksurl;
@@ -32,9 +30,6 @@ const SongDetails = () => {
 
     // får fat i relateret songe baseret på key
     const {data, isFetching: isFetchingRelatedSongs } = useGetRelatedQuery({key});
-
-    // console.log(data)
-
 
 
     const handlePauseClick = () => {
