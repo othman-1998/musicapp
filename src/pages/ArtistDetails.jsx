@@ -6,6 +6,7 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice';
 import PlayPause from '../components/PlayPause';
 import { Link } from 'react-router-dom';
 import { SongCard } from '../components';
+import {Loader} from '../components';
 
 const ArtistDetails = () => {
 
@@ -39,7 +40,7 @@ const ArtistDetails = () => {
 
 
   if (isFetchingSongData || isFetchingArtistDetails || isFetchingArtistTopSongs) {
-    return <div>Loading...</div>;
+    return <Loader />
   }
 
   if (!hasArtistDetails) {

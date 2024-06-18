@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
-import { useGetTopChartsQuery } from '../redux/services/shazamCore'
+import { useGetTopChartsQuery } from '../redux/services/shazamCore';
+import {Loader} from '../components';
 import { ArtistCard } from '../components';
-
 
 const TopArtists = () => {
 
@@ -12,7 +12,7 @@ const TopArtists = () => {
       }, [])
 
     if(isFetching) {
-        return <Loader title="Loading top artists..." />
+        return <Loader title="Loading Top Artists In The World..." />
     }
 
     if(error) return <Error />;
