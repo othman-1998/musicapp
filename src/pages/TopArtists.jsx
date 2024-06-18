@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useGetTopChartsQuery } from '../redux/services/shazamCore'
 import { ArtistCard } from '../components';
 
@@ -6,6 +6,10 @@ import { ArtistCard } from '../components';
 const TopArtists = () => {
 
     const {data, isFetching, error} = useGetTopChartsQuery();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     if(isFetching) {
         return <Loader title="Loading top artists..." />

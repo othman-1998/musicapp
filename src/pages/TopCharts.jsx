@@ -2,8 +2,13 @@ import React from 'react'
 import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 import { Error, Loader, SongCard } from '../components';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const TopCharts = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
     const {data, isFetching, error} = useGetTopChartsQuery();
 

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-
+import ScrollToTop from './components/ScrollToTop';
 import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './components';
 import { ArtistDetails, TopArtists, AroundYou, Discover, Search, SongDetails, TopCharts } from './pages';
 
@@ -9,6 +9,8 @@ const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
+    <>
+          <ScrollToTop />
     <div className="relative flex">
       <Sidebar />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#000000]">
@@ -26,7 +28,7 @@ const App = () => {
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
-          <div className="xl:sticky relative top-10 h-fit">
+          <div className="xl:sticky relative">
             <TopPlay />
           </div>
         </div>
@@ -38,6 +40,7 @@ const App = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
