@@ -27,7 +27,7 @@ export default function Sidebar() {
   const [mobileMenuOpen, setmobileMenuOpen] = useState(false);
 
   return (
-    <div className='z-50'>
+    <>
 
       <div className='md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#191624]'>
         <NavLinks />
@@ -64,6 +64,6 @@ export default function Sidebar() {
 
       </div>
 
-    </div>
+    </>
   )
 }
