@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './components';
 import { ArtistDetails, TopArtists, AroundYou, Discover, Search, SongDetails, TopCharts } from './pages';
-import { useState } from 'react';
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
 
   return (
-    <div className="relative flex">
+    <div className="relative flex h-screen">
       <Sidebar />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#000000]">
         <Searchbar />

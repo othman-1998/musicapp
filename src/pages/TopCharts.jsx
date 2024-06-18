@@ -22,7 +22,7 @@ const TopCharts = () => {
     <div className='flex flex-col'>
         <div className=' w-full'>
           <h2 className='font-bold text-3xl text-white text-left mb-10'>
-              Discover Top Charts In World
+              Discover Top Charts In The World
           </h2>
         </div>
 
