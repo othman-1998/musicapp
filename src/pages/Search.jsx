@@ -23,7 +23,7 @@ const Search = () => {
 
 
     if (isFetching) {
-        return <Loader title="Loading songs around you..." />;
+        return <Loader title={`Loading songs about ${searchTerm}`} />;
     }
 
     if (error) return <Error />;
